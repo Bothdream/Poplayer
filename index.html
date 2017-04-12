@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>弹出层插件</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+	<header>
+      <div class="contanier">
+		<img src="images/logo.png" alt="华为" class="logo">
+		<nav>
+			<ul>
+				<li><a href="#">个人及家用产品</a></li>
+				<li><a href="#">商用解决方案</a></li>
+				<li><a href="#">技术支持</a></li>
+				<li><a href="#">合作伙伴</a></li>
+				<li><a href="#">开发者</a></li>
+			</ul>
+		</nav>
+		<div id="login">登录</div>
+		<div class="clear"></div>
+     </div>
+	</header>
+	<div class="content">
+	   <section class="contanier star"></section>
+	   <section class="contanier phone"></section>
+	</div>
+	<footer>
+	  <div class="contanier friendlink"><ul>
+			<li><a href="#">行业洞察</a></li>
+			<li><a href="#">求职者</a></li>
+			<li><a href="#">网络安全</a></li>
+			<li><a href="#">安全通告</a></li>
+			<li><a href="#">关于我们</a></li>
+		</ul>
+	  </div>
+	</footer>
+</body>
+<script src="./js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/Poplayer.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+   //1.给传来进来的元素设置指定的弹出层
+   //2.初始化遮罩层和弹出框
+   //3.绑定事件
+   var poplayer = new Poplayer($('#login'));
+       poplayer.setConfig({"color":'red',"backgroundColor":'rgba(0,0,0,.6)','isScroll':true});
+   $(window).scroll(function(){
+        if($(this).scrollTop()>=72){
+           $('header').eq(0).css({
+           	  position:'fixed',
+           	  top:0,
+           	  left:0,
+           	  zIndex:90,
+              boxShadow: "0 0 40px 1px"
+           },1000);
+   	     }
+
+   	     if($(this).scrollTop()<72){
+           $('header').eq(0).css({
+           	  position:'',
+           	  boxShadow: "0 0 0 0"
+           },1000);
+   	     }
+   });  
+  
+</script>
+</html>

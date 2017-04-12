@@ -1,0 +1,43 @@
+;(function(){
+  var Poplayer = function(jq){
+      this.trigger.bind();
+  };
+
+  Poplayer.prototype = {
+      /******配置参数******/
+     $.extend(this.config,config);
+     /*****判断页面是否滚动****/
+     $("body").css({overflow:"hidden"});
+    /******添加遮罩层*****/
+          $('body').append("<div id='mask'></div>");
+          //获取整个文档的滚动高度和宽度
+          var sw = document.documentElement.scrollWidth + 15,
+              sh = document.documentElement.scrollHeight + 15;  
+         
+
+      
+          //获取可视区域的宽度和高度
+          var vw = document.documentElement.clientWith,
+              vh = document.documentElement.clienHeight;
+         
+
+          /******关闭弹出层******/
+          var player = this.poplayer,
+              mask = this.mask;
+          this.mask.click(function(){
+               $(this).remove();
+               player.remove();
+               $("body").css({overflow:""}); 
+          });
+
+          this.poplayer.children().first().click(function(){
+               player.remove();
+               mask.remove();
+               $("body").css({overflow:""}); 
+          });
+         
+      }
+  }
+
+  window['Poplayer'] = Poplayer; 
+})()
